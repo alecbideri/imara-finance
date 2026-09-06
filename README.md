@@ -22,7 +22,7 @@ A premium, single-page marketing site built with plain HTML/CSS/JS (no framework
 
 The eligibility form posts via **FormSubmit** (no backend needed):
 
-- **Test endpoint:** `https://formsubmit.co/ajax/bilec1012@gmail.com`
+- **Test endpoint:** `https://formsubmit.co/ajax/info@imarafinance.com`
 - **Live endpoint:** `https://formsubmit.co/ajax/info@imarafinance.com`
 
 The endpoint is a single line in `index.html` - switch it for launch, then click the activation link that FormSubmit emails to the live inbox on first submit.

@@ -48,12 +48,16 @@
   header.scrolled .brand .txt{color:var(--ink)}
   header.scrolled .brand .txt em{color:var(--green)}
   header.scrolled .brand .tag{color:var(--muted)}
-  nav.menu{display:flex;gap:30px}
+  nav.menu{display:flex;gap:26px;align-items:center}
   nav.menu a{font-size:14px;font-weight:500;color:#fff;opacity:.9;position:relative}
   nav.menu a:hover{opacity:1}
   header.scrolled nav.menu a{color:var(--ink)}
   nav.menu a::after{content:"";position:absolute;left:0;bottom:-4px;height:1.5px;width:0;background:var(--gold);transition:width .2s ease}
   nav.menu a:hover::after{width:100%}
+  nav.menu .menu-cta{margin-left:6px;padding:12px 22px;color:var(--ink)!important;opacity:1;background:var(--gold)}
+  nav.menu .menu-cta::after{display:none}
+  nav.menu .menu-cta:hover{opacity:.92;transform:translateY(-1px)}
+  header.scrolled nav.menu .menu-cta{color:var(--ink)!important;background:var(--gold)}
   .hamb{display:none;background:none;border:0;cursor:pointer;color:#fff}
   header.scrolled .hamb{color:var(--ink)}
 
@@ -213,9 +217,12 @@
   .toast.show{opacity:1}
 
   @media(max-width:960px){
-    nav.menu{display:none;position:absolute;top:80px;left:0;right:0;background:var(--cream);flex-direction:column;gap:0;padding:12px 28px 20px;border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.1)}
+    nav.menu{display:none;position:absolute;top:80px;left:0;right:0;background:var(--cream);flex-direction:column;gap:0;padding:12px 28px 22px;border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.1)}
     nav.menu.open{display:flex}
-    nav.menu a{padding:14px 0;border-bottom:1px solid var(--line)}
+    nav.menu a{padding:14px 0;border-bottom:1px solid var(--line);color:var(--ink);opacity:1}
+    nav.menu a::after{display:none}
+    nav.menu .menu-cta{justify-content:center;width:100%;padding:14px;margin:18px 0 4px;color:var(--ink)!important;border-bottom:0!important;background:var(--gold)}
+    nav.menu .menu-cta:hover{background:var(--gold);transform:none}
     .hamb{display:block}
     .hero .grid{grid-template-columns:1fr;gap:60px}
     .hero .stats{flex-wrap:wrap;gap:30px}
@@ -251,11 +258,9 @@
       <a href="#how">How it works</a>
       <a href="#visit">Visit us</a>
       <a href="#faq">Questions</a>
+      <a href="#contact" class="btn menu-cta" data-open>Check eligibility</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:16px">
-      <a href="#contact" class="btn" data-open style="padding:11px 22px;font-size:14px">Check eligibility</a>
-      <button class="hamb" id="hamb" aria-label="Menu">☰</button>
-    </div>
+    <button class="hamb" id="hamb" aria-label="Menu">☰</button>
   </div>
 </header>
 
@@ -452,7 +457,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 IMARA Finance</span>
-      <span>Testing sends to bilec1012@gmail.com · Switch to info@imarafinance.com before launch</span>
+      <span>Contact: info@imarafinance.com</span>
     </div>
   </div>
 </footer>
@@ -462,7 +467,7 @@
     <button class="x" id="modal-x" aria-label="Close">×</button>
     <div id="modal-main">
       <h3>Check eligibility</h3>
-      <p>Tell us the loan and how much you need. We come back with next steps. Testing routes to bilec1012@gmail.com, live goes to info@imarafinance.com.</p>
+      <p>Tell us the loan and how much you need. We come back with next steps, sent to info@imarafinance.com.</p>
       <form id="lead-form">
         <div class="field"><label for="name">Full name</label><input id="name" type="text" autocomplete="name" required /></div>
         <div class="field"><label for="phone">Phone</label><input id="phone" type="tel" autocomplete="tel" required /></div>
@@ -498,9 +503,8 @@
   var toast=document.getElementById('toast'),tt;
   function show(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show');},2200);}
 
-  // Endpoint: TEST now, LIVE at launch. Flip the next line.
-  var ENDPOINT='https://formsubmit.co/ajax/bilec1012@gmail.com';
-  // var ENDPOINT='https://formsubmit.co/ajax/info@imarafinance.com';
+  // Endpoint: live inbox
+  var ENDPOINT='https://formsubmit.co/ajax/info@imarafinance.com';
   var f=document.getElementById('lead-form'),err=document.getElementById('err'),main=document.getElementById('modal-main'),ok=document.getElementById('modal-ok');
   f.addEventListener('submit',function(e){
     e.preventDefault();err.style.display='none';
